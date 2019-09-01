@@ -42,13 +42,21 @@ function isThereRoute(nodeA, nodeB) {
         return true;
     }
 
+    /*
     var result = false;
     nodeA.children.forEach(function(child) {
         result |= isThereRoute(child, nodeB);
     });
     
-    return result;
+    return result; */
+
+    for(var i=0; i<nodeA.children.length; i++) {
+	var child = nodeA.children[i];
+	if (isThereRoute(child, nodeB))
+	    return true;
+    }
+
+    return false;
 }
 var nodeX = new Node("X");
-console.log(isThereRoute(nodeA, nodeB));
-console.log(false | false);
+console.log(isThereRoute(nodeA, nodeX));
