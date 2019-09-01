@@ -44,27 +44,22 @@ function isPath(nA, nB) {
 
 function isPathBF(nA, nB) {
     var queue = [];
-    // visit
-    if (nA == nB)
-        return true;
-    // visited
-    nA.visited = true;
     // enqueue
     queue.push(nA);
     
     while(queue.length > 0) {
         console.dir(queue);
         var n = queue.shift();
+	// visit
+	if (n == nB)
+	    return true;
+	// visited
+	n.visited = true;
+
         for(var i=0; i<n.children.length; i++) {
             var child = n.children[i];
             console.log(child.name);
             if (!child.visited) {
-                console.log("Visiting: " + child.name);
-                if (child === nB) {
-                    console.log("Found " + child.name);
-                    return true;
-                }
-                n.visited = true;
                 queue.push(child);
             }
         };
@@ -74,5 +69,5 @@ function isPathBF(nA, nB) {
 }
 
 // IF YOU WANT TO RETURN IN A LOOP, DO NOT USE FOREACH!!!!
-
-console.log(isPathBF(nodeA, nodeF));
+var nodeX = new Node("X");
+console.log(isPathBF(nodeA, nodeX));
