@@ -68,11 +68,34 @@ function partitionAroundX(head, x) {
 
 function partitionAroundX2(head, x) {
   var n = head;
-  var pHead = head;
-  var pTail = head;
+  var pHead = null;
+  var pTail = null;
+
+  // find x
+  while (n !== null) {
+      if (n.value == x) {
+	  pHead = n;
+	  pTail = n;
+	  if (prev)
+	      prev.next = n.next;
+	  else
+	      head = n.next;
+	  break;
+      }
+      prev = n;
+      n = n.next;
+  }
+  
+  console.log("x = " + pHead.value);
+
+  if (!pHead)
+      return console.log("No node x");
+
+  n = head;
 
   while (n !== null) {
     var next = n.next;
+
     if (n.value < x) { // Goes to head
       n.next = pHead;
       pHead = n;
@@ -89,7 +112,17 @@ function partitionAroundX2(head, x) {
   return pHead;
 }
 
+/*
+5 -> 2 -> 7 -> 3 -> 9
+x = 3
+3 -> 5
+2 -> 3 -> 5
+2 -> 3 -> 5 -> 7
+2 -> 3 -> 5 -> 7 -> 9
 
+2 -> 3 -> 5 -> 7 -> 9 
+
+ */
 printList(nodeA);
 //partitionAroundX(nodeA, 9);
 var newHead = partitionAroundX2(nodeA, 3);
