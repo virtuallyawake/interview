@@ -65,3 +65,5 @@ var genFrequencyTable = function(s) {
     
 	    return false;
 	};
+
+// PE2020 releases and rollout
