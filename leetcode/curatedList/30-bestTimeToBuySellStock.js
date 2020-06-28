@@ -24,13 +24,13 @@ var maxProfit = function(prices) {
 
     for	(var i=1; i<prices.length; i++)	{
         var profit = prices[i] - buyAt;
-	if (profit > 0) {
-	    if (profit > max) {
-		max = profit;
+        if (profit > 0) {
+            if (profit > max) {
+                max = profit;
             }
         } else {
             if (prices[i] < buyAt) {
-        	buyAt =	prices[i];
+                buyAt =	prices[i];
             }
         }
     }
