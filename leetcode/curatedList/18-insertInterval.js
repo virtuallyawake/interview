@@ -38,15 +38,15 @@ var insert = function(intervals, newInterval) {
             break;
         }
     }
-    
+
     if (!inserted) {
         intervals.push(newInterval);
     }
-    
+
     // merge intervals
     var results = [];
     [start, end] = intervals[0];
-    
+
     for (var i=1; i<intervals.length; i++) {
         var currInterval = intervals[i];
         if (currInterval[0] <= end) {
@@ -56,7 +56,7 @@ var insert = function(intervals, newInterval) {
             [start, end] = currInterval;
         }
     }
-    
+
     results.push([start, end]);
     return results;
 };
