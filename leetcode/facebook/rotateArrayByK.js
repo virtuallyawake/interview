@@ -59,16 +59,18 @@ function rotateOnePosition(nums) {
 }
 
 var rotate2 = function(nums, k) {
+    var N = nums.length;
+    k = k % N;
     for (var i=0; i<k; i++) {
         rotateOnePosition(nums);
     }    
 }
 
-// Use a tmp array and put each element at the right positions
-// Then move all elements from tmp array to nums
+// Compute the right position for each element
+// Then move all elements to the right position in nums
 var rotate = function(nums, k) {
     var N = nums.length;
-    // 1. Find the new posiions for elements
+    // 1. Find the new positions for elements
     var table = {};  // pos: element
     for (var i=0; i<N; i++) {
         table[(i+k) % N] = nums[i];

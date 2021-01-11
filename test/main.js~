@@ -1,0 +1,21 @@
+const TaskRunner = require('./taskRunner');
+
+const taskRunner = new TaskRunner();
+
+function exampleSimpleTask(done, name) {
+  console.log(`Task ${name} is starting`)
+  setTimeout(() => {
+    done()
+    console.log(`Task ${name} is done`)
+  }, Math.random() * 1000)
+}
+
+function createExampleSimpleTask(name) {
+  return done => exampleSimpleTask(done, name)
+}
+
+taskRunner.push(createExampleSimpleTask('a')) // executes immediately
+taskRunner.push(createExampleSimpleTask('b')) // executes immediately
+taskRunner.push(createExampleSimpleTask('c')) // executes immediately
+taskRunner.push(createExampleSimpleTask('d')) // should wait until one of the running tasks completes
+taskRunner.push(createExampleSimpleTask('e')) // should wait until one of the running tasks completes

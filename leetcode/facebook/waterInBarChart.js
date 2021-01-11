@@ -71,6 +71,7 @@ function getTallestWalls(arr) {
 function getVolume(arr) {
     var tallestLeftWalls = getTallestWalls(arr);
     var tallestRightWalls = getTallestWalls(arr.reverse());
+    arr.reverse(); // return array back to normal
     tallestRightWalls = tallestRightWalls.reverse();
     var volume = 0;
     
